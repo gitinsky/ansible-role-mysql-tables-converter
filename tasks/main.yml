@@ -1,0 +1,12 @@
+---
+- name: install Ruby
+  yum: name=ruby state=present
+
+- name: install rubygems
+  yum: name=rubygems state=present
+
+- name: install ruby-mysql
+  yum: name=ruby-mysql state=present
+
+- name: checkout mysql_utils
+  git: repo=https://github.com/alexclear/mysql_utils.git dest=/root/mysql_utils
