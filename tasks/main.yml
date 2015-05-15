@@ -1,12 +1,23 @@
 ---
 - name: install Ruby
   yum: name=ruby state=present
+  when: ansible_os_family == 'RedHat'
+
+- name: install Ruby
+  apt: name=ruby state=present
+  when: ansible_os_family == 'Debian'
 
 - name: install rubygems
   yum: name=rubygems state=present
+  when: ansible_os_family == 'RedHat'
 
 - name: install ruby-mysql
   yum: name=ruby-mysql state=present
+  when: ansible_os_family == 'RedHat'
+
+- name: install ruby-mysql
+  apt: name=ruby-mysql state=present
+  when: ansible_os_family == 'Debian'
 
 - name: checkout mysql_utils
   git: repo=https://github.com/alexclear/mysql_utils.git dest=/root/mysql_utils
